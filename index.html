@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mid-Term Project — Choose Your Own Adventure</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1>Campus Quest: The Mid-Term Mission</h1>
+    <p class="tagline">Make choices. Shape your destiny. Reach one of 10 endings.</p>
+  </header>
+
+  <main class="layout">
+    <section id="story" class="story" aria-live="polite">
+      <!-- Story text will render here -->
+    </section>
+
+    <aside class="panel">
+      <div id="imageWrap" class="image-wrap">
+        <img id="stageImage" src="" alt="" />
+      </div>
+
+      <div id="choices" class="choices">
+        <!-- Choice buttons will render here -->
+      </div>
+
+      <div class="controls">
+        <button id="restartBtn" class="btn secondary" type="button" aria-label="Restart the game">Restart</button>
+      </div>
+    </aside>
+  </main>
+
+  <section id="addendum" class="addendum">
+    <h2>Addendum (Process & Reflection)</h2>
+    <p>
+      <strong>Planning:</strong> I mapped the story as a flowchart with one start node, several mid-nodes, and 10 distinct ending nodes.
+      Each ending includes a unique image and short outcome title for clarity.
+    </p>
+    <p>
+      <strong>Structure:</strong> I separated concerns: HTML for structure, CSS for layout/theme, and JavaScript for logic.
+      The story is stored as a dictionary of nodes. Each node has <code>text</code>, <code>image</code>, and
+      <code>choices</code> (label + next key). Ending nodes also include <code>isEnding</code> and <code>endingTitle</code>.
+    </p>
+    <p>
+      <strong>Interactivity:</strong> The page updates via DOM manipulation in <code>renderNode()</code>.
+      Buttons are created dynamically with event listeners. <code>endGame()</code> removes choices and shows a restart option.
+    </p>
+    <p>
+      <strong>Debugging:</strong> I tested reachability for all endings, validated relative image paths (<code>images/...</code>),
+      and confirmed buttons route to valid node keys. I used the browser console to catch typos or missing keys.
+    </p>
+    <p>
+      <strong>Enhancements:</strong> I added responsive layout, accessible landmarks, focus styles, and smooth transitions for a better UX.
+    </p>
+    <p>
+      <strong>Lessons Learned:</strong> Designing branches first prevents dead ends. Keeping content in data (not hard-coded in HTML)
+      makes iteration faster and safer.
+    </p>
+  </section>
+
+  <script src="app.js"></script>
+
+  <!-- REQUIRED FOOTER (exact snippet) -->
+  <footer>
+      <p>Last updated: 
+          <span id="lastModified"></span>
+      </p>
+  </footer>
+  <script type="text/javascript">
+       var x = document.lastModified;
+       document.getElementById('lastModified').textContent = x;
+  </script>
+</body>
+</html>
